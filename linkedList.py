@@ -44,11 +44,25 @@ class LinkedList:
             self.tail = None
         return temp
 
+    def prepend(self, value):
+        new_node = Node(value)
+        if self.length == 0:
+            self.head = new_node
+            self.tail = new_node
+        else:
+            new_node.next = self.head
+            self.head = new_node
+        self.length += 1
+        return True
+
 
 myLinkedList = LinkedList(5)
 myLinkedList.append(9)
 myLinkedList.append(39)
 
-myLinkedList.printList()
-myLinkedList.pop()
+# myLinkedList.printList()
+# myLinkedList.pop()
+# myLinkedList.printList()
+
+myLinkedList.prepend(1)
 myLinkedList.printList()
