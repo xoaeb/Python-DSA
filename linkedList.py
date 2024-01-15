@@ -81,6 +81,14 @@ class LinkedList:
             self.tail = None
         return temp
 
+    def get(self, index):
+        if index < 0 or index >= self.length:
+            return None
+        temp = self.head
+        for _ in range(index):
+            temp = temp.next
+        return temp.value
+
 
 myLinkedList = LinkedList(5)
 myLinkedList.append(9)
@@ -92,5 +100,7 @@ myLinkedList.append(39)
 
 myLinkedList.prepend(1)
 myLinkedList.printList()
-popped_node = myLinkedList.pop_first()
-print("Popped value:", popped_node.value)
+# popped_node = myLinkedList.pop_first()
+# print("Popped value:", popped_node.value)
+
+print(myLinkedList.get(2))
