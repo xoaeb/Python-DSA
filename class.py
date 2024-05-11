@@ -35,3 +35,18 @@ my_dog = Dog("Buddy")
 
 # Calling the bark method on the instance
 my_dog.bark()
+
+class Laptop:
+    def __init__(self, name):
+        self.name = name
+        
+    def specs(self, processorName, refreshRate):
+        print(f"Processor in {self.name} is {processorName} and screen refresh is at {refreshRate}")
+        
+    def games(self, g1, g2, g3):
+        print(f"{self.name} can play games like {g1}, {g2}, {g3} etc.")
+
+
+myLaptop = Laptop('Dell')
+myLaptop.specs('Intel', '120Hz')
+myLaptop.games('RDR2', 'Forza', 'WItcher')
