@@ -55,21 +55,6 @@ class LinkedList:
         self.length += 1
         return True
 
-    # def pop_first(self):
-    #     if self.length == 0:
-    #         return None
-    #     if self.head.next == None:
-    #         temp = self.head
-    #         self.head = None
-    #         self.tail = None
-    #         self.length -= 1
-    #         return temp
-    #     else:
-    #         temp = self.head
-    #         self.head = self.head.next
-    #         self.length -= 1
-    #         return temp
-
     def pop_first(self):
         if self.length == 0:
             return None
@@ -111,10 +96,7 @@ class LinkedList:
         self.length += 1
         return True
 
-    def remove(
-        self,
-        index,
-    ):
+    def remove(self, index):
         if index < 0 or index > self.length:
             return None
         if index == 0:
@@ -127,6 +109,21 @@ class LinkedList:
         temp.next = None
         self.length -= 1
         return temp
+    
+    
+    
+    
+    def reverse(self):
+        temp= self.head
+        before= None
+        after= temp.next
+        self.head= self.tail
+        self.tail= temp
+        for i in range(self.length):
+            after= temp.next
+            temp.next=before
+            before= temp
+            temp=after
 
 
 myLinkedList = LinkedList(5)
@@ -145,7 +142,9 @@ myLinkedList.printList()
 # print(myLinkedList.get(2))
 
 # myLinkedList.set_value(2, 69)
-myLinkedList.remove(2)
+# myLinkedList.remove(2)
 # myLinkedList.insert(2, 25)
+
+myLinkedList.reverse()
 print("****new list***")
 myLinkedList.printList()
