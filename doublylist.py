@@ -96,20 +96,46 @@ class DoublyList:
             for _ in range(index):
                 temp = temp.next
         else:
-            temp= self.tail
+            temp = self.tail
             for _ in range(self.length - 1, index, -1):
                 temp = temp.prev
         return temp
-    
-    
-    
+
     def set_value(self, index, value):
-        temp= self.get(index)
+        temp = self.get(index)
         if temp:
             temp.value = value
             return True
         return False
+
+    def insert(self, index, value):
+        if index < 0 or index > self.length:
+            # return None
+            # false instead of None
+            return False
+        if index == 0:
+            return self.prepend(value)
+        if index == self.length:
+            return self.append(value)
         
+        new_node = Node(value)
+        before = self.get(index-1)
+        after = before.next
+        new_node.prev= before
+        new_node.next= after
+        before.next = new_node
+        after.prev= new_node
+        self.length += 1
+        return True
+
+        # temp = self.get(index - 1)
+        # temp2 = self.get(index)
+        # temp.next = new_node
+        # new_node.prev = temp
+        # new_node.next = temp2
+        # temp2.prev = new_node
+        # self.length += 1
+        # return True
 
 
 my_doublylist = DoublyList(3)
@@ -123,5 +149,6 @@ my_doublylist.append(5)
 # my_doublylist.prepend(0)
 # print(my_doublylist.pop())
 # print(my_doublylist.get(4))
-my_doublylist.set_value(1, 69)
+# my_doublylist.set_value(1, 69)
+my_doublylist.insert(1, 69)
 my_doublylist.printList()
