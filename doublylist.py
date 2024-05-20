@@ -99,7 +99,17 @@ class DoublyList:
             temp= self.tail
             for _ in range(self.length - 1, index, -1):
                 temp = temp.prev
-        return temp.value
+        return temp
+    
+    
+    
+    def set_value(self, index, value):
+        temp= self.get(index)
+        if temp:
+            temp.value = value
+            return True
+        return False
+        
 
 
 my_doublylist = DoublyList(3)
@@ -112,7 +122,6 @@ my_doublylist.append(5)
 
 # my_doublylist.prepend(0)
 # print(my_doublylist.pop())
-print('**get method gets***')
-print(my_doublylist.get(4))
-print('*-*-*')
+# print(my_doublylist.get(4))
+my_doublylist.set_value(1, 69)
 my_doublylist.printList()
