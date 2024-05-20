@@ -62,9 +62,23 @@ class DoublyList:
         self.length -= 1
         return temp
 
+    def prepend(self, value):
+        new_node = Node(value)
+        if self.length == 0:
+            self.head = new_node
+            self.tail = new_node
+        else:
+            new_node.next = self.head
+            self.head.prev = new_node
+            self.head = new_node
+        self.length += 1
+        return True
+
 
 my_doublylist = DoublyList(3)
 my_doublylist.append(9)
 my_doublylist.append(71)
-print(my_doublylist.pop())
+
+my_doublylist.prepend(0)
+# print(my_doublylist.pop())
 my_doublylist.printList()
