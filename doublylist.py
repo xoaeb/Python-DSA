@@ -117,14 +117,14 @@ class DoublyList:
             return self.prepend(value)
         if index == self.length:
             return self.append(value)
-        
+
         new_node = Node(value)
-        before = self.get(index-1)
+        before = self.get(index - 1)
         after = before.next
-        new_node.prev= before
-        new_node.next= after
+        new_node.prev = before
+        new_node.next = after
         before.next = new_node
-        after.prev= new_node
+        after.prev = new_node
         self.length += 1
         return True
 
@@ -136,6 +136,34 @@ class DoublyList:
         # temp2.prev = new_node
         # self.length += 1
         # return True
+
+    def remove(self, index):
+        if index < 0 or index > self.length:
+
+            return False
+
+        if index == 0:
+            return self.pop_first()
+        if index == self.length - 1:
+            return self.pop()
+
+        else:
+            temp = self.get(index)
+            # before = temp.prev
+            # after = temp.next
+            # before.next = after
+            # after.prev = before
+            # temp.next=None
+            # temp.prev=None
+            # self.length -= 1
+            # return temp
+
+            temp.next.prev = temp.prev
+            temp.prev.next = temp.next
+            temp.next = None
+            temp.prev = None
+            self.length -= 1
+            return temp
 
 
 my_doublylist = DoublyList(3)
@@ -150,5 +178,6 @@ my_doublylist.append(5)
 # print(my_doublylist.pop())
 # print(my_doublylist.get(4))
 # my_doublylist.set_value(1, 69)
-my_doublylist.insert(1, 69)
+# my_doublylist.insert(1, 69)
+my_doublylist.remove(2)
 my_doublylist.printList()
