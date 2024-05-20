@@ -112,7 +112,7 @@ class LinkedList:
     
     
     
-    
+    # VERY IMP ⭐⭐⭐⭐💫
     def reverse(self):
         temp= self.head
         before= None
