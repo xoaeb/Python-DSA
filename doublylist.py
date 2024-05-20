@@ -88,6 +88,19 @@ class DoublyList:
         self.length -= 1
         return temp.value
 
+    def get(self, index):
+        if index < 0 or index > self.length:
+            return None
+        temp = self.head
+        if index < self.length / 2:
+            for _ in range(index):
+                temp = temp.next
+        else:
+            temp= self.tail
+            for _ in range(self.length - 1, index, -1):
+                temp = temp.prev
+        return temp.value
+
 
 my_doublylist = DoublyList(3)
 my_doublylist.append(1)
@@ -97,13 +110,9 @@ my_doublylist.append(1)
 
 my_doublylist.append(5)
 
-print(my_doublylist.pop_first())
-print(my_doublylist.pop_first())
-
-print(my_doublylist.pop_first())
-print(my_doublylist.pop_first())
-
-
 # my_doublylist.prepend(0)
 # print(my_doublylist.pop())
-# my_doublylist.printList()
+print('**get method gets***')
+print(my_doublylist.get(4))
+print('*-*-*')
+my_doublylist.printList()
