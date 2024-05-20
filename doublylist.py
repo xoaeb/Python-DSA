@@ -163,8 +163,15 @@ class DoublyList:
             temp.next = None
             temp.prev = None
             self.length -= 1
-            return temp
-
+            return temp 
+        
+        
+   
+        
+    def swap_first_lastt(self):
+        if self.head is None or self.head == self.tail:
+            return
+        self.head.value, self.tail.value = self.tail.value, self.head.value
 
 my_doublylist = DoublyList(3)
 my_doublylist.append(1)
@@ -179,5 +186,6 @@ my_doublylist.append(5)
 # print(my_doublylist.get(4))
 # my_doublylist.set_value(1, 69)
 # my_doublylist.insert(1, 69)
-my_doublylist.remove(2)
+# my_doublylist.remove(2)
+my_doublylist.swap_first_lastt()
 my_doublylist.printList()
