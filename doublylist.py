@@ -74,11 +74,36 @@ class DoublyList:
         self.length += 1
         return True
 
+    def pop_first(self):
+        if self.length == 0:
+            return None
+        temp = self.head
+        if self.length == 1:
+            self.head = None
+            self.tail = None
+        else:
+            self.head = self.head.next
+            self.head.prev = None
+            temp.next = None
+        self.length -= 1
+        return temp.value
+
 
 my_doublylist = DoublyList(3)
-my_doublylist.append(9)
-my_doublylist.append(71)
+my_doublylist.append(1)
+my_doublylist.append(4)
 
-my_doublylist.prepend(0)
+my_doublylist.append(1)
+
+my_doublylist.append(5)
+
+print(my_doublylist.pop_first())
+print(my_doublylist.pop_first())
+
+print(my_doublylist.pop_first())
+print(my_doublylist.pop_first())
+
+
+# my_doublylist.prepend(0)
 # print(my_doublylist.pop())
-my_doublylist.printList()
+# my_doublylist.printList()
