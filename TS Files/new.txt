@@ -1,0 +1,18 @@
+removeWithIndex(index:number, value: number){
+        if (index < 0 || index > this.length) {
+      return null;
+    } else if (index === 0) {
+      return this.popFirst(value);
+    } else if (index === this.length ) {
+      return this.pop(value);
+    }
+
+    let pre = this.get(index-1)
+    let temp= pre.next
+    pre.next = temp.next
+    temp.next = null
+    return temp
+
+
+
+}
