@@ -32,6 +32,27 @@ class  BinarySearchTree:
                     return True
                 temp = temp.right                 
         
+    def contains(self, value):
+        temp = self.root
+        while temp is not None:
+            if (value < temp.value):
+                temp = temp.left
+                
+            elif (value > temp.value):
+                temp = temp.right
+            else:
+                return True
+        return False
+    
+# simplified by ChatGPT
+# def contains(self, value):
+#     temp = self.root
+#     while temp:
+#         if value == temp.value:
+#             return True
+#         temp = temp.left if value < temp.value else temp.right
+#     return False
+
         
 myTree = BinarySearchTree()
 myTree.insert(2)
@@ -40,10 +61,4 @@ myTree.insert(3)
 myTree.insert(2)
 myTree.insert(6)
 
-# Safe printing to avoid None reference errors
-print(myTree.root.value, 'root')  # Expected: 2
-print(myTree.root.left.value, 'left')  # Expected: 1
-if myTree.root.right:  # Check if right child exists
-    print(myTree.root.right.value, 'right')  # Expected: 3
-if myTree.root.right and myTree.root.right.right:  # Check if right child of right child exists
-    print(myTree.root.right.right.value, 'right right')  # Expected: 6
+print(myTree.contains(0))
